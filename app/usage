@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+ORIG_DIR="$(pwd)"
+cd "$(dirname "$0")"
+BIN_DIR="$(pwd)"
+
+onExit() {
+  cd "${ORIG_DIR}"
+}
+trap onExit EXIT
+
+main() {
+  cat - <<EOF
+
+EOEPCA Client Utilities
+-----------------------
+Commands available:
+  register-client - Register a client with the login-service
+  token-urlsafe   - Generate a random token that is URL safe
+
+EOF
+}
+
+main "$@"
